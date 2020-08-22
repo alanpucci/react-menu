@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,  {useState} from 'react';
+import Routes from './Routes';
+import Header from './components/Header';
 
-function App() {
+//function App() {
+const App = () => {
+
+  const [ productosTotal, agregarProductosTotal] = useState([]);
+
+  const [ pizza , agregarPizza ] = useState([]);
+  const [ ensalada, agregarEnsalada ] = useState([]);
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container vh-100 bg-light">
+       <div className="row bg-secondary h-100">
+         <div className="col-6 bg-info my-auto mx-auto rounded border">
+          <Header />
+
+          <Routes 
+            agregarProductosTotal={agregarProductosTotal}
+            productosTotal={productosTotal} 
+            pizza={pizza}
+            agregarPizza={agregarPizza}
+            ensalada={ensalada}
+            agregarEnsalada={agregarEnsalada}
+          />
+         </div>
+       </div>
+
     </div>
-  );
+
+    );
 }
 
 export default App;
