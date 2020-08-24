@@ -1,62 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Pizzas = ({agregarProductosTotal, productosTotal, pizza, agregarPizza}) => {
 
-    const [ pizzaMuzza, agregarMuzzas ] = useState([]);
-    const [ mostrarMuzza, cambiarMostrarMuzza ] = useState(false);
-
-    const [ pizzaNapo, agregarNapos ] = useState([]);
-    const [ mostrarNapo, cambiarMostrarNapo ] = useState(false);
-
-    const [ pizzaAmericana, agregarAmericanas ] = useState([]);
-    const [ mostrarAmericana, cambiarMostrarAmericana ] = useState(false);
-
-    const [ pizzaRoque, agregarRoques ] = useState([]);
-    const [ mostrarRoque, cambiarMostrarRoque ] = useState(false);
-
-    const [ pizzaTotal, agregarPizzaTotal ] = useState([]);
-    const [ mostrarPizzaTotal, cambiarMostrarPizzaTotal ] = useState(false); 
-
-    const agregarMuzza = () => {
-        agregarMuzzas([...pizzaMuzza, "Muzzarella"]);
-        cambiarMostrarMuzza(true);
-        agregarPizzaTotal([...pizzaTotal, "Muzzarella"]);
-        cambiarMostrarPizzaTotal(true);
-
-        agregarProductosTotal([...productosTotal, "Muzzarella"]);
-        agregarPizza([...pizza, "Muzzarella"]);
+    const sumarPizza = pizz => {
+        agregarPizza([...pizza, pizz]);
+        agregarProductosTotal([...pizza, pizz]);
     }
 
-    const agregarNapo = () => {
-        agregarNapos([...pizzaNapo, "Napolitana"]);
-        cambiarMostrarNapo(true);
-        agregarPizzaTotal([...pizzaTotal, "Napolitana"]);
-        cambiarMostrarPizzaTotal(true);
-
-        agregarProductosTotal([...productosTotal, "Napolitana"]);
-        agregarPizza([...pizza, "Napolitana"]);
-    }
-
-    const agregarAmericana = () => {
-        agregarAmericanas([...pizzaAmericana, "Americana"]);
-        cambiarMostrarAmericana(true);
-        agregarPizzaTotal([...pizzaTotal, "Americana"]);
-        cambiarMostrarPizzaTotal(true);
-
-        agregarProductosTotal([...productosTotal, "Americana"]);
-        agregarPizza([...pizza, "Americana"]);
-    }
-
-    const agregarRoque = () => {
-        agregarRoques([...pizzaRoque, "Roquefort"]);
-        cambiarMostrarRoque(true);
-        agregarPizzaTotal([...pizzaTotal, "Roquefort"]);
-        cambiarMostrarPizzaTotal(true);
-
-        agregarProductosTotal([...productosTotal, "Roquefort"]);
-        agregarPizza([...pizza, "Roquefort"]);
-
-    }
+    const muzza = pizza.filter(pizza => pizza === "Muzzarella");
+    const napo = pizza.filter(pizza => pizza === "Napolitana");
+    const americana = pizza.filter(pizza => pizza === "Americana");
+    const roquefort = pizza.filter(pizza => pizza === "Roquefort");
 
     return ( 
         <div>
@@ -64,32 +18,29 @@ const Pizzas = ({agregarProductosTotal, productosTotal, pizza, agregarPizza}) =>
             <ul>
                 <li className="my-3">
                     <span>Muzzarella </span>
-                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => agregarMuzza()}>+</button>
+                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPizza("Muzzarella")}>+</button>
                 </li>
                 <li className="my-3">
                     <span>Napolitana </span>
-                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => agregarNapo()}>+</button>
+                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPizza("Napolitana")}>+</button>
                 </li>
                 <li className="my-3">
                     <span>Americana </span>
-                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => agregarAmericana()}>+</button>
+                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPizza("Americana")}>+</button>
                 </li>
                 <li className="my-3">
                     <span>Roquefort </span>
-                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => agregarRoque()}>+</button>
+                    <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPizza("Roquefort")}>+</button>
                 </li>
             </ul>
 
-            <h3>Tu pedido es de: 
-                {mostrarMuzza ? pizzaMuzza.length + " Muzarrella " : null}
-                {mostrarNapo ? pizzaNapo.length + " Napolitana " : null}
-                {mostrarAmericana ? pizzaAmericana.length + " Americana " : null}
-                {mostrarRoque ? pizzaRoque.length + " Roquefort " : null}
-                <br />
-                {mostrarPizzaTotal ? "Pedido actual: " + pizzaTotal.length + " pizzas" : null}
-                <br />
-                Tu pedido total es: {pizza.length} pizzas
-            </h3>
+            <h4>El total de pizzas es: {pizza.length} </h4>
+            <h5>Tu pedido actual es: <br />
+                {muzza.length > 0 ? muzza.length + " Muzarrella" : null}<br />
+                {napo.length > 0 ? napo.length + " Napolitana" : null}<br />
+                {americana.length > 0 ? americana.length + " Americana" : null}<br />
+                {roquefort.length > 0 ? roquefort.length + " Roquefort" : null}
+            </h5>
         </div>
      );
 }
