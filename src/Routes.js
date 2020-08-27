@@ -3,8 +3,9 @@ import { Switch, Route} from 'react-router-dom';
 import Home from './components/Home';
 import Pizzas from './components/Pizzas';
 import Ensaladas from './components/Ensaladas';
+import Pastas from './components/Pastas';
 
-const Routes = ({agregarProductosTotal, productosTotal, pizza, agregarPizza, ensalada, agregarEnsalada}) => {
+const Routes = ({agregarProductosTotal, productosTotal, pizza, agregarPizza, ensalada, agregarEnsalada, pasta, agregarPasta}) => {
     return ( 
         <Switch>
             <Route exact path="/">
@@ -12,6 +13,7 @@ const Routes = ({agregarProductosTotal, productosTotal, pizza, agregarPizza, ens
                     productosTotal={productosTotal}
                     pizza={pizza}
                     ensalada={ensalada}
+                    pasta={pasta}
                 />
             </Route>
             <Route path="/pizzas">
@@ -28,6 +30,14 @@ const Routes = ({agregarProductosTotal, productosTotal, pizza, agregarPizza, ens
                     productosTotal={productosTotal}
                     ensalada={ensalada}
                     agregarEnsalada={agregarEnsalada}
+                />
+            </Route>
+            <Route path="/pastas">
+                <Pastas 
+                    agregarProductosTotal={agregarProductosTotal}
+                    productosTotal={productosTotal}
+                    pasta={pasta}
+                    agregarPasta={agregarPasta}
                 />
             </Route>
         </Switch>

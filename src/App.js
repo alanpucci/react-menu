@@ -2,10 +2,10 @@ import React,  {useState} from 'react';
 import Routes from './Routes';
 import Header from './components/Header';
 
-const estadoInicial = {
-  "Cobb": 0, 
-  "Choclo": 0
-}
+// const estadoInicial = {
+//   "Cobb": 0, 
+//   "Choclo": 0
+// }
 
 //function App() {
 const App = () => {
@@ -13,7 +13,8 @@ const App = () => {
   const [ productosTotal, agregarProductosTotal] = useState([]);
 
   const [ pizza , agregarPizza ] = useState([]);
-  const [ ensalada, agregarEnsalada ] = useState(estadoInicial);
+  const [ ensalada, agregarEnsalada ] = useState([]);
+  const [ pasta, agregarPasta ] = useState([]);
   
 
   return (
@@ -29,6 +30,8 @@ const App = () => {
             agregarPizza={agregarPizza}
             ensalada={ensalada}
             agregarEnsalada={agregarEnsalada}
+            pasta={pasta}
+            agregarPasta={agregarPasta}
           />
          </div>
        </div>

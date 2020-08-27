@@ -1,16 +1,20 @@
 import React from 'react';
+import comidas from './comidas';
+import uuid from 'react-uuid';
 
 const Pizzas = ({agregarProductosTotal, productosTotal, pizza, agregarPizza}) => {
 
     const sumarPizza = pizz => {
-        agregarPizza([...pizza, pizz]);
-        agregarProductosTotal([...pizza, pizz]);
+        const buscarPizza = comidas.find(comida => comida.name === pizz)
+        agregarPizza([...pizza, buscarPizza]);
+        agregarProductosTotal([...productosTotal, pizz]);
     }
 
-    const muzza = pizza.filter(pizza => pizza === "Muzzarella");
-    const napo = pizza.filter(pizza => pizza === "Napolitana");
-    const americana = pizza.filter(pizza => pizza === "Americana");
-    const roquefort = pizza.filter(pizza => pizza === "Roquefort");
+    const muzza = pizza.filter(pizza => pizza.name === "Muzzarella");
+    const napo = pizza.filter(pizza => pizza.name === "Napolitana");
+    const americana = pizza.filter(pizza => pizza.name === "Americana");
+    const roquefort = pizza.filter(pizza => pizza.name === "Roquefort");
+
 
     return ( 
         <div>
@@ -19,6 +23,7 @@ const Pizzas = ({agregarProductosTotal, productosTotal, pizza, agregarPizza}) =>
                 <li className="my-3">
                     <span>Muzzarella </span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPizza("Muzzarella")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2">-</button>
                 </li>
                 <li className="my-3">
                     <span>Napolitana </span>

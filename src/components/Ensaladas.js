@@ -5,28 +5,34 @@ import uuid from 'react-uuid';
 const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosTotal}) => {
 
     const sumarEnsalada = salad => {
-        // agregarEnsalada([...ensalada, comidas.find(comida => comida.name === salad)]);
-        ensalada[salad] = ensalada[salad] + 1;
-        agregarEnsalada(ensalada);
+        agregarEnsalada([...ensalada, comidas.find(comida => comida.name === salad)]);
         agregarProductosTotal([...productosTotal, salad]);
+        // ensalada[salad] = ensalada[salad] + 1;
+        // agregarEnsalada(ensalada);
     }
 
     const restarEnsalada = salad => {
         // const quitar = ensalada.filter(comida => comida.name === salad);
         // quitar.pop();
-        ensalada[salad] = ensalada[salad] - 1;
-        agregarEnsalada(ensalada);
-        const posicion = productosTotal.indexOf(salad);
-        const productosAux = [...productosTotal];
-        productosAux.splice(posicion, 1);
-        agregarProductosTotal([...productosAux]);
+        // ensalada[salad] = ensalada[salad] - 1;
+        // agregarEnsalada(ensalada);
+        // const posicion = productosTotal.indexOf(salad);
+        // const productosAux = [...productosTotal];
+        // productosAux.splice(posicion, 1);
+        // agregarProductosTotal([...productosAux]);
+        const buscarEns = ensalada.find(ensalada => ensalada.name === salad);
+        console.log(buscarEns);
+        ensalada.splice(buscarEns, 1);
+        productosTotal.splice(buscarEns, 1);
+        agregarEnsalada([...ensalada]);
+        agregarProductosTotal([...productosTotal]);
     }
 
 
-    // const cobb = ensalada.filter(ensalada => ensalada.name === "Cobb");
-    // const choclo = ensalada.filter(ensalada => ensalada.name === "Choclo");
-    // const cesar = ensalada.filter(ensalada => ensalada.name === "Cesar");
-    // const mayo = ensalada.filter(ensalada => ensalada.name === "Mayonesa de ave");
+    const cobb = ensalada.filter(ensalada => ensalada.name === "Cobb");
+    const choclo = ensalada.filter(ensalada => ensalada.name === "Choclo");
+    const cesar = ensalada.filter(ensalada => ensalada.name === "Cesar");
+    const mayo = ensalada.filter(ensalada => ensalada.name === "Mayonesa de ave");
 
     return (
         <div>
@@ -35,7 +41,7 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
                 <li className="my-3">
                     <span>Ensalada Cobb</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Cobb")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada("Cobb")}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada()}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ensalada choclo</span>
@@ -54,12 +60,12 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
 
         <h4>El total de ensaladas es: {ensalada.length}</h4>
         <h5>Tu pedido actual es: <br />
-            {ensalada["Cobb"]}
+            {/* {ensalada["Cobb"]} */}
             
-            {/* {cobb.length > 0 ? " " + cobb.length + " cobb" : null}<br />
+            {cobb.length > 0 ? " " + cobb.length + " cobb" : null}<br />
             {choclo.length > 0 ? " " + choclo.length + " ens.choclo" : null}<br />
             {cesar.length > 0 ? " " + cesar.length + " cesar" : null}<br />
-            {mayo.length > 0 ? " " + mayo.length + " mayonesa de ave" : null} */}
+            {mayo.length > 0 ? " " + mayo.length + " mayonesa de ave" : null}
 
          </h5>
         </div>
