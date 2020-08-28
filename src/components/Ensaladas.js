@@ -11,19 +11,28 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
         // agregarEnsalada(ensalada);
     }
 
-    const restarEnsalada = salad => {
-        // const quitar = ensalada.filter(comida => comida.name === salad);
-        // quitar.pop();
-        // ensalada[salad] = ensalada[salad] - 1;
-        // agregarEnsalada(ensalada);
-        // const posicion = productosTotal.indexOf(salad);
-        // const productosAux = [...productosTotal];
-        // productosAux.splice(posicion, 1);
-        // agregarProductosTotal([...productosAux]);
-        const buscarEns = ensalada.find(ensalada => ensalada.name === salad);
-        console.log(buscarEns);
-        ensalada.splice(buscarEns, 1);
-        productosTotal.splice(buscarEns, 1);
+    // const restarEnsalada = salad => {
+    //     // const quitar = ensalada.filter(comida => comida.name === salad);
+    //     // quitar.pop();
+    //     // ensalada[salad] = ensalada[salad] - 1;
+    //     // agregarEnsalada(ensalada);
+    //     // const posicion = productosTotal.indexOf(salad);
+    //     // const productosAux = [...productosTotal];
+    //     // productosAux.splice(posicion, 1);
+    //     // agregarProductosTotal([...productosAux]);
+    //     ensalada.splice(buscarEns, 1);
+    //     productosTotal.splice(buscarEns, 1);
+    //     agregarEnsalada([...ensalada]);
+    //     agregarProductosTotal([...productosTotal]);
+    // }
+
+    const buscarEnsalada = salad => {
+        const ensaladaBuscada = ensalada.findIndex(ensalada => ensalada.name === salad);
+        const ensaladaEnTotal = productosTotal.findIndex(ensalada => ensalada.name === salad);
+        if(ensaladaBuscada >= 0){
+            ensalada.splice(ensaladaBuscada, 1);
+            productosTotal.splice(ensaladaEnTotal, 1);
+        }
         agregarEnsalada([...ensalada]);
         agregarProductosTotal([...productosTotal]);
     }
@@ -41,19 +50,22 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
                 <li className="my-3">
                     <span>Ensalada Cobb</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Cobb")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada()}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Cobb")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ensalada choclo</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Choclo")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Choclo")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ensalada Cesar</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Cesar")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Cesar")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Mayonesa de ave</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Mayonesa de ave")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Mayonesa de ave")}>-</button>
                 </li>
                 
             </ul>
