@@ -5,8 +5,19 @@ const Pastas = ({pasta, agregarPasta, productosTotal, agregarProductosTotal}) =>
     
     const sumarPasta = passta => {
         agregarPasta([...pasta, comidas.find(comida => comida.name === passta)]);
-        agregarProductosTotal([...productosTotal, pasta]);
+        agregarProductosTotal([...productosTotal, comidas.find(comida => comida.name === passta)]);
         
+    }
+
+    const restarPasta = passta => {
+        const pastaEncontrada = pasta.findIndex(pasta => pasta.name === passta);
+        const pastaEnTotalEncontrada = pasta.findIndex(pasta => pasta.name === passta);
+        if(pastaEncontrada >= 0){
+            pasta.splice(pastaEncontrada, 1);
+            productosTotal.splice(pastaEnTotalEncontrada, 1);
+        }
+        agregarPasta([...pasta]);
+        agregarProductosTotal([...productosTotal]);
     }
 
     const bolognesa = pasta.filter(pasta => pasta.name === "Spaghetti con bolognesa");
@@ -23,26 +34,32 @@ const Pastas = ({pasta, agregarPasta, productosTotal, agregarProductosTotal}) =>
                 <li className="my-3">
                     <span>Spaghetti con bolognesa</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Spaghetti con bolognesa")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Spaghetti con bolognesa")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Spaghetti con estofado</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Spaghetti con estofado")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Spaghetti con estofado")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Sorrentinos de jamon y queso</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Sorrentinos de jamon y queso")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Sorrentinos de jamon y queso")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Sorrentinos de calabaza y queso</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Sorrentinos de calabaza y queso")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Sorrentinos de calabaza y queso")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ravioles de verdura</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Ravioles de verdura")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Ravioles de verdura")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ravioles de ricota</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarPasta("Ravioles de ricota")}>+</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarPasta("Ravioles de ricota")}>-</button>
                 </li>
             </ul>
 

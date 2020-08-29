@@ -1,14 +1,12 @@
 import React from 'react';
 import comidas from './comidas';
-import uuid from 'react-uuid';
 
 const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosTotal}) => {
 
     const sumarEnsalada = salad => {
         agregarEnsalada([...ensalada, comidas.find(comida => comida.name === salad)]);
-        agregarProductosTotal([...productosTotal, salad]);
-        // ensalada[salad] = ensalada[salad] + 1;
-        // agregarEnsalada(ensalada);
+        agregarProductosTotal([...productosTotal, comidas.find(comida => comida.name === salad)]);
+        
     }
 
     // const restarEnsalada = salad => {
@@ -26,12 +24,12 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
     //     agregarProductosTotal([...productosTotal]);
     // }
 
-    const buscarEnsalada = salad => {
-        const ensaladaBuscada = ensalada.findIndex(ensalada => ensalada.name === salad);
-        const ensaladaEnTotal = productosTotal.findIndex(ensalada => ensalada.name === salad);
-        if(ensaladaBuscada >= 0){
-            ensalada.splice(ensaladaBuscada, 1);
-            productosTotal.splice(ensaladaEnTotal, 1);
+    const restarEnsalada = salad => {
+        const ensaladaEncontrada = ensalada.findIndex(ensalada => ensalada.name === salad);
+        const ensaladaEnTotalEncontrada = productosTotal.findIndex(ensalada => ensalada.name === salad);
+        if(ensaladaEncontrada >= 0){
+            ensalada.splice(ensaladaEncontrada, 1);
+            productosTotal.splice(ensaladaEnTotalEncontrada, 1);
         }
         agregarEnsalada([...ensalada]);
         agregarProductosTotal([...productosTotal]);
@@ -50,22 +48,22 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
                 <li className="my-3">
                     <span>Ensalada Cobb</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Cobb")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Cobb")}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada("Cobb")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ensalada choclo</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Choclo")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Choclo")}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada("Choclo")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Ensalada Cesar</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Cesar")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Cesar")}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada("Cesar")}>-</button>
                 </li>
                 <li className="my-3">
                     <span>Mayonesa de ave</span>
                     <button type="button" className="btn btn-outline-light rounded-circle ml-2" onClick={() => sumarEnsalada("Mayonesa de ave")}>+</button>
-                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => buscarEnsalada("Mayonesa de ave")}>-</button>
+                    <button type="button" className="btn btn-outline-danger rounded-circle ml-2" onClick={() => restarEnsalada("Mayonesa de ave")}>-</button>
                 </li>
                 
             </ul>
