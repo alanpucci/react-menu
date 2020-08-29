@@ -53,6 +53,34 @@ const comidas = [{
 {
     name: "Ravioles de ricota",
     price: 200
+},
+{
+    name: "Carne napolitana",
+    price: 220
+},
+{
+    name: "Carne a caballo",
+    price: 210
+},
+{
+    name: "Carne simple",
+    price: 190
+},
+{
+    name: "Suprema simple",
+    price: 190
+},
+{
+    name: "Suprema a la fugazzeta",
+    price: 200
+},
+{
+    name: "Suprema a la suiza",
+    price: 200
+},
+{
+    name: "Berenjena a la napo",
+    price: 180
 }
 ]
 

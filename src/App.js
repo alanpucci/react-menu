@@ -2,6 +2,8 @@ import React,  {useState} from 'react';
 import Routes from './Routes';
 import Header from './components/Header';
 import styled from '@emotion/styled';
+import Stars from './components/video/stars.mp4'
+
 
 const Contenedor = styled.div `
   background: rgba(57,108,196,1);
@@ -30,13 +32,16 @@ const App = () => {
   const [ pizza , agregarPizza ] = useState([]);
   const [ ensalada, agregarEnsalada ] = useState([]);
   const [ pasta, agregarPasta ] = useState([]);
+  const [ milanesa, agregarMilanesa ] = useState([]);
+  const [ search, setSearch ] = useState('');
   
 
   return (
     <div className="container vh-100 bg-light">
        <div className="row bg-light h-100">
-         <Contenedor className="col-6 my-auto mx-auto">
-          <Header />
+      
+         <Contenedor className="col-10 my-auto mx-auto">
+           
 
           <Routes 
             agregarProductosTotal={agregarProductosTotal}
@@ -47,6 +52,10 @@ const App = () => {
             agregarEnsalada={agregarEnsalada}
             pasta={pasta}
             agregarPasta={agregarPasta}
+            milanesa={milanesa}
+            agregarMilanesa={agregarMilanesa}
+            search={search}
+            setSearch={setSearch}
           />
          </Contenedor>
        </div>

@@ -5,7 +5,7 @@ const Boton = styled.button `
     background-color: red
 `;
 
-const Home = ({productosTotal, pizza, ensalada, pasta}) => {
+const Home = ({productosTotal, pizza, ensalada, pasta, milanesa}) => {
 
     
     const [ show, setShow ] = useState(false);
@@ -35,8 +35,8 @@ const Home = ({productosTotal, pizza, ensalada, pasta}) => {
             <h3>El total de productos es: {productosTotal.length}</h3>
             <h4>El total de pizzas es: {pizza.length}</h4>
             <h4>El total de ensaladas es: {ensalada.length} </h4>
-            {/* <h5>El total de a pagar es: {ensalada["Cobb"] * comidas[0].price}</h5> */}
             <h4>El total de pastas es: {pasta.length}</h4>
+            <h4>El total de milanesas es: {milanesa.length}</h4>
             <button type="button" className="btn btn-primary btn-lg my-4" onClick={() => mostrarEnsaladas()}>Mostrar pedidos</button> <br />
             <Boton type="button" className="btn btn-primary btn-sm mb-4" onClick={() => precioTotal()}>Mostrar total</Boton>
             {show ? <h2 className="d-inline ml-3 bg-dark rounded text-info ">${total}</h2> : null}
