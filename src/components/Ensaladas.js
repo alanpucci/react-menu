@@ -25,16 +25,17 @@ const Ensaladas = ({ensalada, agregarEnsalada, productosTotal, agregarProductosT
     // }
 
     const restarEnsalada = salad => {
-        const ensaladaEncontrada = ensalada.findIndex(ensalada => ensalada.name === salad);
+        const ensaladaAux = Object.assign([], ensalada);
+        const productosTotalAux = Object.assign([], productosTotal);
+        const ensaladaEncontrada = ensaladaAux.findIndex(ensalada => ensalada.name === salad);
         const ensaladaEnTotalEncontrada = productosTotal.findIndex(ensalada => ensalada.name === salad);
         if(ensaladaEncontrada >= 0){
-            ensalada.splice(ensaladaEncontrada, 1);
-            productosTotal.splice(ensaladaEnTotalEncontrada, 1);
+            ensaladaAux.splice(ensaladaEncontrada, 1);
+            productosTotalAux.splice(ensaladaEnTotalEncontrada, 1);
         }
-        agregarEnsalada([...ensalada]);
-        agregarProductosTotal([...productosTotal]);
+        agregarEnsalada([...ensaladaAux]);
+        agregarProductosTotal([...productosTotalAux]);
     }
-
 
     const cobb = ensalada.filter(ensalada => ensalada.name === "Cobb");
     const choclo = ensalada.filter(ensalada => ensalada.name === "Choclo");

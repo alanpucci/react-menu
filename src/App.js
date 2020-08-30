@@ -1,6 +1,5 @@
 import React,  {useState} from 'react';
 import Routes from './Routes';
-import Header from './components/Header';
 import styled from '@emotion/styled';
 import Stars from './components/video/stars.mp4'
 
@@ -37,10 +36,18 @@ const App = () => {
   
 
   return (
-    <div className="container vh-100 bg-light">
+    <div>
+      <video autoPlay loop muted style={
+        {position:"absolute", top: "0", left: "0", width: "100%"}}
+        >
+        <source src={Stars} />
+      </video>
+
+    <div className="container-fluid vh-100 bg-light">
+      
        <div className="row bg-light h-100">
       
-         <Contenedor className="col-10 my-auto mx-auto">
+         <Contenedor className="col-6 my-auto mx-auto">
            
 
           <Routes 
@@ -60,6 +67,7 @@ const App = () => {
          </Contenedor>
        </div>
 
+    </div>
     </div>
 
     );

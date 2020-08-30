@@ -14,7 +14,7 @@ const Milanesas = ({milanesa, agregarMilanesa, productosTotal, agregarProductosT
         const milaEnTotalEncontrada = milanesa.findIndex(comida => comida.name === mila);
         if(milaEncontrada >= 0) {
             milanesa.splice(milaEncontrada, 1);
-            productosTotal.splice(milaEncontrada, 1);
+            productosTotal.splice(milaEnTotalEncontrada, 1);
         }
         agregarMilanesa([...milanesa]);
         agregarProductosTotal([...productosTotal]);
